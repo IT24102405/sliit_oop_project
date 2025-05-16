@@ -28,3 +28,5 @@ public class AddUserServlet extends HttpServlet {
         }
     }
 }
+
+//method
