@@ -14,14 +14,14 @@ public class OrderService {
 
     public OrderService(ServletContext context) throws IOException {
         if (context == null) {
-            // Fallback to a default location if ServletContext is not available
+            
             String userHome = System.getProperty("user.home");
             String dataDir = Paths.get(userHome, "salesapp_data").toString();
             createDirectory(dataDir);
             this.ordersFilePath = Paths.get(dataDir, "orders.txt").toString();
             this.tempFilePath = Paths.get(dataDir, "temp_orders.txt").toString();
         } else {
-            // Use WEB-INF/data directory
+        
             String dataDir = context.getRealPath("/WEB-INF/data");
             if (dataDir == null) {
                 throw new IOException("Could not resolve /WEB-INF/data directory");
@@ -31,7 +31,7 @@ public class OrderService {
             this.tempFilePath = Paths.get(dataDir, "temp_orders.txt").toString();
         }
         
-        // Ensure the orders file exists
+        
         createFileIfNotExists(ordersFilePath);
     }
 
@@ -49,7 +49,7 @@ public class OrderService {
         }
     }
 
-    // Save a new sales order to the orders.txt file
+    
     public void saveOrder(SalesOrder order) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ordersFilePath, true))) {
             writer.write(String.format("%s,%s,%s,%s,%d",
@@ -62,7 +62,6 @@ public class OrderService {
         }
     }
 
-    // Read and return all sales orders from the file
     public List<SalesOrder> getAllOrders() throws IOException {
         List<SalesOrder> orders = new ArrayList<>();
         Path path = Paths.get(ordersFilePath);
@@ -81,7 +80,7 @@ public class OrderService {
                             parts[0], parts[1], parts[2], parts[3], Integer.parseInt(parts[4])
                         ));
                     } catch (NumberFormatException e) {
-                        // Log the error but continue processing other records
+                        
                         System.err.println("Invalid quantity format in line: " + line);
                     }
                 }
@@ -90,7 +89,7 @@ public class OrderService {
         return orders;
     }
 
-    // Delete an order by orderId
+   
     public void deleteOrder(String orderId) throws IOException {
         Path inputPath = Paths.get(ordersFilePath);
         Path tempPath = Paths.get(tempFilePath);
@@ -117,7 +116,7 @@ public class OrderService {
             throw new IOException("Order ID not found: " + orderId);
         }
 
-        // Write the remaining lines back to the original file
+       
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ordersFilePath))) {
             for (String line : remainingLines) {
                 writer.write(line);
@@ -141,7 +140,7 @@ public class OrderService {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (line.startsWith(updatedOrder.getOrderId() + ",")) {
-                    // Replace the line with the updated order
+                   
                     String updatedLine = String.format("%s,%s,%s,%s,%d",
                             updatedOrder.getOrderId(),
                             updatedOrder.getCustomerName(),
