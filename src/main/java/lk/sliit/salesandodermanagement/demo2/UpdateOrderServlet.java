@@ -29,7 +29,7 @@ public class UpdateOrderServlet extends HttpServlet {
             OrderService orderService = new OrderService(getServletContext());
             orderService.updateOrder(updatedOrder);
 
-            response.sendRedirect("view-orders"); // or wherever you list orders
+            response.sendRedirect("view-orders"); 
         } catch (NumberFormatException e) {
             request.setAttribute("error", "Invalid quantity format.");
             request.getRequestDispatcher("/error.jsp").forward(request, response);
