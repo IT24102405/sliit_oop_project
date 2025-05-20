@@ -1,9 +1,0 @@
-wett,wett@regd,122,admin
-name,uhf@jhf,1233,user
-putin,putin@putin,3870,user
-vlad,kbf@yf,vlad,user
-trump,hf@ihf,123,user
-well,kjknf@hf,123,admin
-Mahinda Rajapaksha,CentralBank@money,123,user
-uf,hdu@yyfr,123,admin
-hello,chuu@hh,123,user
