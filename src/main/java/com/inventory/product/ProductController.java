@@ -12,7 +12,10 @@ public final class ProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws IOException, ServletException {
-        if (request.getParameter("action") == null) response.sendError(400);
+        if (request.getParameter("action") == null) {
+            response.sendError(400); // bad request
+            return;
+        }
 
         if (request.getParameter("action").equals("list")) {
             request.setAttribute("products", ProductService.getProducts());
