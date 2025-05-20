@@ -61,9 +61,9 @@ public final class ProductService {
 
     public static void deleteProduct(long id) throws IOException {
         if (products == null) getProducts();
-        for (Product product : products) {
-            if (product.getId() == id) {
-                products.remove(product);
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getId() == id) {
+                products.remove(products.get(i));
                 save();
             }
         }
