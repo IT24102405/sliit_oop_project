@@ -1,5 +1,7 @@
 package com.inventory.product;
 
+import com.google.gson.Gson;
+
 public final class Product {
     private Long id;
     private String name;

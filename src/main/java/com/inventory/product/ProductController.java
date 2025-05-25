@@ -39,12 +39,6 @@ public final class ProductController extends HttpServlet {
             Product product = ProductService.getProduct(Long.parseLong(request.getParameter("id")));
             request.setAttribute("product", product);
             request.getRequestDispatcher("product/edit-product.jsp").forward(request, response);
-            return;
-        }
-
-        if (request.getParameter("action").equals("delete")) {
-            ProductService.deleteProduct(Long.parseLong(request.getParameter("id")));
-            response.sendRedirect(request.getContextPath() + "/product?action=list");
         }
     }
 

@@ -1,3 +1,2 @@
-{"id":1,"name":"Sample Product 1","price":10000.0,"vendor":"Sample Vendor 1","description":"Sample Product Description 1"}
-{"id":2,"name":"Sample Product 2","price":12000.0,"vendor":"Sample Vendor 2","description":"Sample Product Description 2"}
-{"id":3,"name":"Sample Product 3","price":14000.0,"vendor":"Sample Vendor 3","description":"Sample Product Description 3"}
+{"id":4,"name":"fd","price":435.0,"vendor":"fdf","description":"ddfd"}
+{"id":5,"name":"kjkjh - 9878","price":9898.0,"vendor":"kjk","description":"jk"}

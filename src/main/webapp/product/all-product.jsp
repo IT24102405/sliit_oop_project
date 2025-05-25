@@ -1,5 +1,6 @@
 <%@ page import = "java.util.List" %>
 <%@ page import = "com.inventory.product.Product" %>
+<%@ page import = "com.inventory.product.Stack" %>
 <%@ page contentType = "text/html;charset=UTF-8" language = "java" %>
 <!doctype html>
 <html lang = "en">
@@ -13,7 +14,7 @@
     </head>
     <body>
         <%
-            List<Product> products = (List<Product>) request.getAttribute("products");
+            Stack<Product> products = (Stack<Product>) request.getAttribute("products");
         %>
         <br><br><br>
         <div class = "container text-center">

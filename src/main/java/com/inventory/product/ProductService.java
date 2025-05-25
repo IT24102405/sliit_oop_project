@@ -3,24 +3,22 @@ package com.inventory.product;
 import com.google.gson.Gson;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public final class ProductService {
-    private static final String FILE = "D:/sliit_oop_project/Products.txt";
-    private static List<Product> products;
+    private static final String FILE = "C:\\Users\\NaveenB2004\\Desktop\\SLIIT_OOP_PROJECT\\Products.txt";
+    private static Stack<Product> products;
     private static long productId = 1L;
 
-    public static synchronized List<Product> getProducts() throws IOException {
+    public static synchronized Stack<Product> getProducts() throws IOException {
         if (products != null) return products;
-        products = new ArrayList<>();
+        products = new Stack<>(100);
         if (!new File(FILE).exists()) return products;
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE))) {
             Gson gson = new Gson();
             String line;
             while ((line = reader.readLine()) != null) {
                 Product product = gson.fromJson(line, Product.class);
-                products.add(product);
+                products.push(product);
                 productId = product.getId();
             }
             productId++;
@@ -41,7 +39,7 @@ public final class ProductService {
     public static void addProduct(Product product) throws IOException {
         if (products == null) getProducts();
         product.setId(productId++);
-        products.add(product);
+        products.push(product);
         save();
     }
 
@@ -55,16 +53,6 @@ public final class ProductService {
                 product1.setDescription(product.getDescription());
                 save();
                 return;
-            }
-        }
-    }
-
-    public static void deleteProduct(long id) throws IOException {
-        if (products == null) getProducts();
-        for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getId() == id) {
-                products.remove(products.get(i));
-                save();
             }
         }
     }
